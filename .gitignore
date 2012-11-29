@@ -11,3 +11,4 @@ db/sql
 javascripts/bundles
 stylesheets/bundles
 .project
+coldbox/*
