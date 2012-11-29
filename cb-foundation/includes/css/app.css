@@ -1,0 +1,56 @@
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: TopBar
+:: Page Name 1
+:: Page Name 2
+*/
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+
+/* -----------------------------------------
+   TopBar
+----------------------------------------- */
+.contain-to-grid{
+	background:none;
+}
+.top-bar, .top-bar h1{
+	font-family: 'Finger Paint', cursive;
+	background-color: #35353A;
+}
+.top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active {
+	background-color: #35353A;
+}
+.top-bar section{
+	margin-right: 15px;
+}
+.toggle-topbar{
+	color: white;
+	text-align: right;
+	padding-right: 50px;
+}
+.search.small.button.round{
+	font-size: 11px;
+	padding: 4px 11px 5px;
+	margin: 0;
+}
+
+
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+
