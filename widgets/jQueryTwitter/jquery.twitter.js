@@ -11,21 +11,21 @@
 	*/
 
 	$.fn.getTwitter = function(options) {
-
+        
+        // We need upper case to match arguments after CF serialization 
 		$.fn.getTwitter.defaults = {
-			userName: null,
-			numTweets: 5,
-			loaderText: "Loading tweets...",
-			slideIn: true,
-			slideDuration: 750,
-			showHeading: true,
-			headingText: "Latest Tweets",
-			showProfileLink: true,
-			showTimestamp: true,
-			includeRetweets: false,
-			excludeReplies: true
+			USERNAME: null,
+			NUMTWEETS: 5,
+			LOADERTEXT: "Loading tweets...",
+			SLIDEIN: true,
+			SLIDEDURATION: 750,
+			SHOWHEADING: true,
+			HEADINGTEXT: "Latest Tweets",
+			SHOWPROFILELINK: true,
+			SHOWTIMESTAMP: true,
+			INCLUDERETWEETS: false,
+			EXCLUDEREPLIES: true
 		};
-
 		var o = $.extend({}, $.fn.getTwitter.defaults, options);
 
 		return this.each(function() {
@@ -35,8 +35,8 @@
 			c.hide();
 
 			// add heading to container element
-			/*if (o.showHeading) {
-				c.append("<h2>"+o.headingText+"</h2>");
+			/*if (o.SHOWHEADING) {
+				c.append("<h2>"+o.HEADINGTEXT+"</h2>");
 			}*/
 
 			// add twitter list to container element
@@ -51,15 +51,15 @@
 			tl.hide();
 
 			// add preLoader to container element
-			var preLoaderHTML = $("<div class=\"alert-box secondary\">"+o.loaderText+"</div>");
+			var preLoaderHTML = $("<div class=\"alert-box secondary\">"+o.LOADERTEXT+"</div>");
 			c.append(preLoaderHTML);
 
 			// show container element
 			c.show();
 
-			// request (o.numTweets + 20) to avoid not having enough tweets if includeRetweets = false and/or excludeReplies = true
-			window.jsonTwitterFeed = "https://api.twitter.com/1/statuses/user_timeline.json?include_rts="+o.includeRetweets+"&excludeReplies="+o.excludeReplies+"&screen_name="+o.userName+"&count="+(o.numTweets + 20);
-
+			// request (o.NUMTWEETS + 20) to avoid not having enough tweets if INCLUDERETWEETS = false and/or EXCLUDEREPLIES = true
+			window.jsonTwitterFeed = "https://api.twitter.com/1/statuses/user_timeline.json?include_rts="+o.INCLUDERETWEETS+"&EXCLUDEREPLIES="+o.EXCLUDEREPLIES+"&screen_name="+o.USERNAME+"&count="+(o.NUMTWEETS + 20);
+            
 			$.ajax({
 				url: jsonTwitterFeed,
 				data: {},
@@ -68,27 +68,27 @@
 				timeout: 50000,
 				success: function(data) {
 					window.count = 0;
-
 					$.each(data, function(key, val) {
 						count++;
 						var tweetHTML = "<div class='row'><div class='twelve columns'><aside><p style='margin-bottom:0;'>" + replaceURLWithHTMLLinks(val.text) + "";
 
-						if (o.showTimestamp) tweetHTML += "<br/> - " + relative_time(val.created_at) + " -";
+						if (o.SHOWTIMESTAMP) tweetHTML += "<br/> - " + relative_time(val.created_at) + " -";
 					
 						tweetHTML += "</p></aside></div></div>";
-						if (count != o.numTweets) {
+						if (count != o.NUMTWEETS) {
 							tweetHTML += "<div class='row'><div class='four columns centered'><hr style='margin:12px 0 11px;'/></div></div>";
 						}
 
 						//$("#twitter_update_list").append(tweetHTML);
 						$("#tweet").append(tweetHTML);
 
-						if (count == o.numTweets) {
+						if (count == o.NUMTWEETS) {
 							// remove preLoader from container element
 							$(preLoaderHTML).remove();
+							
 
 							// show twitter list
-							if (o.slideIn) {
+							if (o.SLIDEIN) {
 								// a fix for the jQuery slide effect
 								// Hat-tip: http://blog.pengoworks.com/index.cfm/2009/4/21/Fixing-jQuerys-slideDown-effect-ie-Jumpy-Animation
 								var tlHeight = tl.data("originalHeight");
@@ -100,7 +100,7 @@
 									tl.hide().css({height: 0});
 								}
 
-								tl.show().animate({height: tlHeight}, o.slideDuration);
+								tl.show().animate({height: tlHeight}, o.SLIDEDURATION);
 							}
 							else {
 								tl.show();
@@ -116,8 +116,8 @@
 						}
 					});
 					// add Twitter profile link to container element
-					if (o.showProfileLink) {
-						var profileLinkHTML = "<div class='row'><div class='twelve columns'><a class=\"right\" href=\"https://twitter.com/"+o.userName+"\" target=\"_blank\">Older tweets »</a></div></div>";
+					if (o.SHOWPROFILELINK) {
+						var profileLinkHTML = "<div class='row'><div class='twelve columns'><a class=\"right\" href=\"https://twitter.com/"+o.USERNAME+"\" target=\"_blank\">Older tweets »</a></div></div>";
 						c.append(profileLinkHTML);
 					}
 				},

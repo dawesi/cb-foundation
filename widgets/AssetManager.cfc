@@ -17,27 +17,28 @@ component extends="contentbox.model.ui.BaseWidget"{
 		return this;
 	}
 	
-	function addToHead(
+	function addFileToHead(
 		required 	string 	asset, //The asset(s) to load, only js or css files. This can also be a comma delimmited list.
 					boolean async=false, //HTML5 JavaScript argument: Specifies that the script is executed asynchronously (only for external scripts)
 					boolean defer=false //HTML5 JavaScript argument: Specifies that the script is executed when the page has finished parsing (only for external scripts)
 	){
-		addAsset(argumentCollection=arguments);
+		arguments.target = "head";
+		addFile(argumentCollection=arguments);
 	}
 	
-	
-	function addToFoot(
+	function addFile(
 		required 	string 	asset, //The asset(s) to load, only js or css files. This can also be a comma delimmited list.
 					boolean async=false, //HTML5 JavaScript argument: Specifies that the script is executed asynchronously (only for external scripts)
-					boolean defer=false //HTML5 JavaScript argument: Specifies that the script is executed when the page has finished parsing (only for external scripts)
+					boolean defer=false, //HTML5 JavaScript argument: Specifies that the script is executed when the page has finished parsing (only for external scripts)
+					string	target=""
 		){
-		arguments.target = "foot";
 		addAsset(argumentCollection=arguments);
 	}
 	
+	// TODO : Plug this with JSMin
 	function renderIt(){
 		var event = controller.getRequestService().getContext();
-		// TODO : Plug this with JSMin
+		
 		$htmlhead(event.getValue("CSSToHead",""));
 		$htmlhead(event.getValue("JSToHead",""));
 		return event.getValue("JSToFoot","");
@@ -48,7 +49,7 @@ component extends="contentbox.model.ui.BaseWidget"{
 		required 	string 	asset, 
 					boolean async=false, 
 					boolean defer=false, 
-					string	target="head" 
+					string	target="" 
 	){
 		var event = controller.getRequestService().getContext();
 		var sbJS = createObject("java","java.lang.StringBuffer").init('');

@@ -13,12 +13,12 @@
    Shared Styles
 ----------------------------------------- */
 
-
 /* -----------------------------------------
    TopBar
 ----------------------------------------- */
+
 .contain-to-grid{
-	background:none;
+	background-color: #35353A;
 }
 .top-bar, .top-bar h1{
 	font-family: 'Finger Paint', cursive;
@@ -40,7 +40,6 @@
 	padding: 4px 11px 5px;
 	margin: 0;
 }
-
 
 /* -----------------------------------------
    Page Name 1

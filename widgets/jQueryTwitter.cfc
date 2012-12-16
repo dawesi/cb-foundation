@@ -34,22 +34,14 @@ component extends="contentbox.model.ui.BaseWidget"{
 		boolean includeRetweets	= false,
 		boolean excludeReplies	= true
 	){
-		cb.getWidget("AssetManager").addToHead("#cb.layoutRoot()#/widgets/jQueryTwitter/jquery.twitter.js");
+		cb.getWidget("AssetManager").addFileToHead("#cb.layoutRoot()#/widgets/jQueryTwitter/jquery.twitter.js");
+		
+		local.targetID = arguments.targetID;
+		structDelete(arguments,"targetID");
+		//writeDump(SerializeJSON(arguments));abort;
 		html.addJSContent("
 			$(document).ready(function() {
-				$('###arguments.targetID#').getTwitter({
-					userName: 'I_TwitIT',
-					numTweets: 5,
-					loaderText: 'Loading tweets...',
-					slideIn: true,
-					slideDuration: 750,
-					showHeading: false,
-					headingText: '',
-					showProfileLink: true,
-					showTimestamp: true,
-					includeRetweets: false,
-					excludeReplies: true
-				});
+				$('###local.targetID#').getTwitter(#SerializeJSON(arguments)#);
 			});
 		",true);
 	}

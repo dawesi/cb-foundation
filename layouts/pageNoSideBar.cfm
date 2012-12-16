@@ -4,6 +4,7 @@
 <!--[if gt IE 8 |!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	#cb.quickView("_htmlHead")#
+	
 </head>
 <body>
 	<!--- ContentBoxEvent --->
@@ -56,7 +57,7 @@
 				<div class="four columns" id="tweet">
 					<div class="row show-for-small"><div class="twelve columns">&nbsp;</div></div>
 					<h4>Tweets</h4><hr/>
-					#cb.widget("jQueryTwitter")#
+					#cb.widget("jQueryTwitter",{"userName"="gocontentbox"})#
 				</div>
 				<!-- End Twitter -->
 			
@@ -88,22 +89,22 @@
 			</div>
 		</div>
 	</footer>
-	#cb.getWidget("AssetManager").addToHead("
-			#cb.layoutRoot()#/includes/js/jquery.placeholder.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.accordion.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.alerts.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.buttons.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.clearing.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.forms.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.joyride.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.magellan.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.mediaQueryToggle.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.navigation.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.reveal.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.tabs.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.tooltips.js,
-			#cb.layoutRoot()#/includes/js/jquery.foundation.topbar.js,
-			#cb.layoutRoot()#/includes/js/app.js"
+	#cb.getWidget("AssetManager").addFileToHead("
+		#cb.layoutRoot()#/includes/js/jquery.placeholder.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.accordion.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.alerts.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.buttons.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.clearing.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.forms.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.joyride.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.magellan.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.mediaQueryToggle.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.navigation.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.reveal.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.tabs.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.tooltips.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.topbar.js,
+		#cb.layoutRoot()#/includes/js/app.js"
 	)#
  	#cb.widget("AssetManager")#
     <!-- End Footer -->
