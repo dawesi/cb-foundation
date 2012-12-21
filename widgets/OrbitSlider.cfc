@@ -39,16 +39,22 @@ component extends="contentbox.model.ui.BaseWidget"{
 		string bulletThumbLocation			= "",			// location from this file where thumbs will be
 		string fluid						= ""	 		// set a aspect ratio for content slides (ex: '4x3')
 	){
-		cb.getWidget("AssetManager").addFileToHead("#cb.layoutRoot()#/widgets/OrbitSlider/jquery.foundation.orbit.js,#cb.layoutRoot()#/widgets/OrbitSlider/style.css");
-		html.addStyleContent("
-			##featured { display: none; }
-			##featured.orbit { display: block; }
-		",true);
-		html.addJSContent("
-			$(window).load(function(){
-			  $('##featured').orbit(#SerializeJSON(arguments)#);
-		    });
-		",true);
+		savecontent variable="includes" {
+			writeOutput('
+			<link rel="stylesheet" type="text/css"	href="#cb.layoutRoot()#/widgets/OrbitSlider/style.css">
+			<style type="text/css">
+				##featured { display: none; }
+				##featured.orbit { display: block; }
+			</style>
+			<script type="text/javascript" src="#cb.layoutRoot()#/widgets/OrbitSlider/jquery.foundation.orbit.js"></script> 
+			<script type="text/javascript" defer="defer"> 
+				$(window).load(function(){
+				  
+				  $("##featured").orbit(#SerializeJSON(arguments)#);
+			    });
+			</script>
+			');
+		};
 		try {
 			savecontent variable="orbitSlider" {
 				writeOutput('
@@ -94,7 +100,7 @@ component extends="contentbox.model.ui.BaseWidget"{
 				');
 			}
 		}
-		return orbitSlider;
+		return includes&orbitSlider;
 	}
 	
 }

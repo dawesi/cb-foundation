@@ -20,7 +20,7 @@ component extends="contentbox.model.ui.BaseWidget"{
 	/**
 	* Render the widget out
 	*/
-	void function renderIt(
+	any function renderIt(
 		string targetID			= "tweet",
 		string userName 		= "I_TwitIT",
 		numeric numTweets 		= 5,
@@ -34,16 +34,21 @@ component extends="contentbox.model.ui.BaseWidget"{
 		boolean includeRetweets	= false,
 		boolean excludeReplies	= true
 	){
-		cb.getWidget("AssetManager").addFileToHead("#cb.layoutRoot()#/widgets/jQueryTwitter/jquery.twitter.js");
 		
 		local.targetID = arguments.targetID;
 		structDelete(arguments,"targetID");
-		//writeDump(SerializeJSON(arguments));abort;
-		html.addJSContent("
-			$(document).ready(function() {
-				$('###local.targetID#').getTwitter(#SerializeJSON(arguments)#);
-			});
-		",true);
+		
+		savecontent variable="includes" {
+			writeOutput('
+				<script type="text/javascript" src="#cb.layoutRoot()#/widgets/jQueryTwitter/jquery.twitter.js"></script> 
+				<script type="text/javascript" defer="defer"> 
+					$(document).ready(function() {
+						$("###local.targetID#").getTwitter(#SerializeJSON(arguments)#);
+					});
+				</script>
+			');
+		};
+		
+		return includes;		
 	}
-	
 }
