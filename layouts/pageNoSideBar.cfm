@@ -4,7 +4,6 @@
 <!--[if gt IE 8 |!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	#cb.quickView("_htmlHead")#
-	
 </head>
 <body>
 	<!--- ContentBoxEvent --->

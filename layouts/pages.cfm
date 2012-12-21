@@ -80,35 +80,24 @@
       </div>
     </div> 
   </footer>
-  
-
-
-  
-  <script src="#cb.layoutRoot()#/includes/js/jquery.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.mediaQueryToggle.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.forms.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.reveal.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.orbit.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.navigation.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.buttons.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.tabs.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.tooltips.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.accordion.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.placeholder.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.alerts.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.topbar.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.joyride.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.clearing.js"></script>
-  <script src="#cb.layoutRoot()#/includes/js/jquery.foundation.magellan.js"></script>
-  
-  <script src="#cb.layoutRoot()#/includes/js/app.js"></script>
-  
-    <script>
-    $(window).load(function(){
-      //$("##featured").orbit();
-	  $('##featured').orbit({ fluid: '2x1' });
-    });
-    </script> 
+	#cb.getWidget("AssetManager").addFileToHead("
+		#cb.layoutRoot()#/includes/js/jquery.placeholder.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.accordion.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.alerts.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.buttons.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.clearing.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.forms.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.joyride.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.magellan.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.mediaQueryToggle.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.navigation.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.reveal.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.tabs.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.tooltips.js,
+		#cb.layoutRoot()#/includes/js/jquery.foundation.topbar.js,
+		#cb.layoutRoot()#/includes/js/app.js"
+	)#
+ 	#cb.widget("AssetManager")#
   
 </body>
 </html>
