@@ -19,21 +19,12 @@
 		</div>
 		<div class="row">
 			<div class="nine columns" role="content"><!--- Main Blog Content --->
-				#cb.quickEntries()#
+				#cb.mainView()#
 			</div>
 			<aside class="three columns"><!--- Sidebar --->
-			  <h5>Categories</h5>
-			  <ul class="side-nav">
-			    <li><a href="##">News</a></li>
-			    <li><a href="##">Code</a></li>
-			    <li><a href="##">Design</a></li>
-			    <li><a href="##">Fun</a></li>
-			    <li><a href="##">Weasels</a></li>
-			  </ul>
 			  <div class="panel">
-			    <h5>Featured</h5>
-			    <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-			    <a href="##">Read More &rarr;</a>
+			    <h5>Categories</h5>
+			  	#cb.widget(name="Categories")#
 			  </div>
 			</aside>
 		</div>
