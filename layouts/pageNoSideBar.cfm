@@ -7,13 +7,15 @@
 		#cb.quickView("_htmlHead")#
 	</head>
 	<body>
-		#cb.event("cbui_afterBodyStart")#<!--- ContentBoxEvent --->
-		<header class="row"><!--- Nav Bar --->
+		#cb.event("cbui_afterBodyStart")#
+		<header class="row">
+			<!--- Nav Bar --->
 			<div class="twelve columns">#cb.quickView("_topbar")#</div>
 		</header>
 		<div class="row"><div class="twelve columns">&nbsp;</div></div>
 		<cfif cb.isMobile() eq false>
-		<div class="row"><!--- Content Slider --->
+		<div class="row">
+			<!--- Content Slider --->
 			<div class="twelve columns">
 				#cb.widget("OrbitSlider")#
 			</div>
@@ -21,34 +23,51 @@
 		</cfif>
 		<div class="row">
 			<div class="twelve columns">
+				<div class="row show-for-small"><div class="twelve columns">&nbsp;</div></div>
 				<div class="row">
-					<div class="four columns"><!--- Shows --->
-						<div class="row show-for-small"><div class="twelve columns">&nbsp;</div></div>
-						<h4>Upcoming Shows</h4><hr/>
-						<div class="row">
-							<div class="one column">
-								<img src="http://placehold.it/50x50&text=[img]" />
-							</div>
-							<div class="nine columns">
-								<h5><a href="##">Venue Name</a></h5>
-								<h6 class="subheader">Doors at 00:00pm</h6>
-							</div>
-						</div>
-					</div>
-					<div class="four columns"><!--- Blog --->
+					<!--- Blog --->
+					<div class="four columns">
 						<div class="row show-for-small"><div class="twelve columns">&nbsp;</div></div>
 						<h4>Blog</h4><hr/>
 						#cb.widget("RecentEntries")#
 					</div>
-					<div class="four columns" id="tweet"><!--- Twitter --->
+					<!--- Twitter --->
+					<div class="four columns" id="tweet">
 						<div class="row show-for-small"><div class="twelve columns">&nbsp;</div></div>
 						<h4>Tweets</h4><hr/>
+						#cb.widget("jQueryTwitter",{"userName"="gocontentbox"})#
 					</div>
-					#cb.widget("jQueryTwitter",{"userName"="gocontentbox"})#
+					<!--- Events --->
+					<div class="four columns" >
+						<script type="text/javascript" src="#cb.layoutRoot()#/widgets/gCalFLow/jquery.gCal_flow.js"></script>
+						<h4>Upcoming events</h4><hr/>
+						<div id="gcf-custom-template">		
+							<div class="gcf-item-container-block">
+								<ul class="pricing-table gcf-item-block">
+								  <li class="title gcf-item-title">Title</li>
+								  <li class="price gcf-item-update-date">Date</li>
+								  <li class="description gcf-item-description">Description</li>
+								  <li class="cta-button"><a class="button gcf-item-link">Show details</a></li>
+								</ul>
+							</div>
+						</div>
+						<a class="right" href="http://www.google.com/calendar/embed?src=contact@cfbeer.com">All events »</a>
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+					    	$('##gcf-custom-template').gCalFlow({
+								calid: 'contact@cfbeer.com',
+					          	maxitem: 2,
+					          	mode: 'upcoming',
+								date_formatter: function(d, allday_p) { return (d.getMonth()+1) + "/" + d.getDate() + "/" + d.getYear().toString().substr(-2) }
+							});
+						});
+					</script>					
 				</div>
 			</div>
 		</div>
-		#cb.quickView("_footer")#<!--- Footer --->		
+		<!--- Footer --->	
+		#cb.quickView("_footer")#	
 	</body>
 </html>
 	</cfoutput>

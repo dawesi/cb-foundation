@@ -1,5 +1,5 @@
 /**
-* A responsive widget for Twitter
+* A responsive widget for Google calendar
 */
 component extends="contentbox.model.ui.BaseWidget"{
 	
@@ -8,9 +8,9 @@ component extends="contentbox.model.ui.BaseWidget"{
 		super.init(controller);
 		
 		// Widget Properties
-		setPluginName("jQueryTwitter");
+		setPluginName("gCalFlow");
 		setPluginVersion("1.0");
-		setPluginDescription("A responsive widget that displays N last tweets from your account");
+		setPluginDescription("A responsive widget for Google calendar");
 		setPluginAuthor("Donaldo DE SOUSA");
 		setPluginAuthorURL("http://");
 		
